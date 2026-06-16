@@ -6,7 +6,9 @@ Output:
     "1": {
         "author": "Chinua Achebe",
         "title": "Things Fall Apart",
-        "reviews": {}
+        "reviews": {
+            "student": "I love Chinua Achebe!"
+        }
     },
     "2": {
         "author": "Hans Christian Andersen",
