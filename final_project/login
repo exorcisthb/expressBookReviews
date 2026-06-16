@@ -3,5 +3,5 @@ curl -s -X POST -H "Content-Type: application/json" -d '{"username":"student","p
 
 Output:
 {
-    "message": "Customer successfully logged in"
+    "message": "Login successful!"
 }

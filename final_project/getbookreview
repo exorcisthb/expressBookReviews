@@ -3,5 +3,5 @@ curl -s http://localhost:5000/review/1
 
 Output:
 {
-    "student": "I love Chinua Achebe!"
+    "John": "I love this book! Must read."
 }
