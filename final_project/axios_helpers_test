@@ -1,0 +1,6 @@
+{
+    "getAllBooks_async_await": "Retrieved 10 books successfully",
+    "getBookByISBN_promise_callbacks": "Retrieved book: Things Fall Apart by Chinua Achebe",
+    "getBooksByAuthor_async_await": "Retrieved 1 book(s) by Jane Austen",
+    "getBooksByTitle_async_await": "Retrieved book: Fairy tales"
+}

@@ -1,6 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+const { getAllBooks, getBookByISBN, getBooksByAuthor, getBooksByTitle } = require('./router/general.js');
 
 const baseURL = 'http://localhost:5000';
 
@@ -80,6 +81,21 @@ async function runTests() {
     console.log("Testing Task 10: Delete review for ISBN 1...");
     const resDeleteReview = await axios.delete(`${baseURL}/customer/auth/review/1`, authConfig);
     saveOutput('deletereview', `curl -s -b cookies.txt -X DELETE http://localhost:5000/customer/auth/review/1`, resDeleteReview.data);
+
+    // Task 11: Test Axios helper functions (getAllBooks, getBookByISBN, getBooksByAuthor, getBooksByTitle)
+    console.log("Testing Task 11: Axios helper functions...");
+    const allBooks = await getAllBooks();
+    const bookByISBN = await getBookByISBN('1');
+    const booksByAuthor = await getBooksByAuthor('Jane Austen');
+    const booksByTitle = await getBooksByTitle('Fairy tales');
+    const task11Result = {
+      getAllBooks_async_await: `Retrieved ${Object.keys(allBooks).length} books successfully`,
+      getBookByISBN_promise_callbacks: `Retrieved book: ${bookByISBN.title} by ${bookByISBN.author}`,
+      getBooksByAuthor_async_await: `Retrieved ${Object.keys(booksByAuthor).length} book(s) by Jane Austen`,
+      getBooksByTitle_async_await: `Retrieved book: ${booksByTitle[Object.keys(booksByTitle)[0]].title}`
+    };
+    fs.writeFileSync(path.join(__dirname, 'axios_helpers_test'), JSON.stringify(task11Result, null, 4));
+    console.log("Saved Task 11 output to axios_helpers_test");
 
     console.log("All tasks completed successfully and outputs saved!");
   } catch (error) {
